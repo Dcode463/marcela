@@ -1,45 +1,214 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>Para mi esposa</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Mi Amor 🌻</title>
+
+  <!-- Fuente cursiva bonita -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fff8dc, #ffe680);
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1.2s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1, h2 {
+      color: #b8860b;
+      text-align: center;
+    }
+
+    .hero {
+      font-size: 2.8em;
+      font-weight: bold;
+      max-width: 800px;
+    }
+
+    .sub {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .gallery img {
+      width: 260px;
+      margin: 12px;
+      border-radius: 20px;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.08);
+    }
+
+    .letter {
+      max-width: 700px;
+      background: #f4e4bc;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      font-family: 'Georgia', serif;
+      font-size: 1.2em;
+      line-height: 1.9;
+      border: 3px solid #e0c48f;
+      position: relative;
+    }
+
+    .letter::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+      opacity: 0.4;
+    }
+
+    .letter-content {
+      position: relative;
+      white-space: pre-wrap;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.6em;
+      font-style: italic;
+    }
+
+    #inicio {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      background: #b8860b;
+      color: white;
+      cursor: pointer;
+    }
+
+  </style>
 </head>
-
 <body>
-    <div class="valentines-day">
-        <div class="envelope"></div>
-        <div class="heart"></div>
-        <div class="text">Toca aqui<br> cosita preciosa </div>
-        <div class="front"></div>
-    </div>
 
-    <div id="card">
-        <div class="side one">
-            <i class="fas fa-heart"></i>
-        </div>
-        <div class="side two">
-            <h2>🌻 🌻 🌻</h2>
-            <p>Mi amada esposa</p>
-            <p>
-  Mi amor, nunca olvides lo mucho que te amo y lo importante que eres para mí. Estoy completamente seguro de que juntos cumpliremos cada una de nuestras metas. Eres todo lo que necesito en esta vida. Gracias por tus cuidados, gracias por apoyarme siempre y gracias por esos momentos tan hermosos en los que eres tan cariñosa conmigo. Te amo con todo mi corazón, mi preciosa 💕
-            </p>
-            <p>
-               
-            </p>
-            <p>
-                Con cariño,<br>
-             Tu Cabezon
-            </p>
-        </div>
-    </div>
+  <!-- PANTALLA INICIAL -->
+  <section id="inicio">
+    <h1 class="hero">🌻 Feliz día de las flores amarillas cosita preciosa 🌻</h1>
+    <button onclick="iniciar()">Toca aqui mi amor</button>
+  </section>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script src="assets/js/main.js"></script>
+  <audio id="musica" src="cancion.mp3"></audio>
+
+  <div id="contenido" style="display:none;">
+
+  <!-- SECCIÓN 1 HUMOR -->
+  <section class="reveal">
+    <h1 class="hero">🌻 ¿Mi amor pensaste que no te daría tus flores amarillas?</h1>
+    <p class="sub">Jamas olvidaria eso, y perdon por no darte girasoles mi amor :(, por el momento solo puedo programartelos </p>
+  </section>
+
+  <!-- SECCIÓN 2 -->
+  <section class="reveal">
+    <h2> Esposita hoy es el día de las flores amarillas, pero la verdad es que ningún girasol
+      es tan bonito como tu sonrisa 🌻</h2>
+    <div class="gallery">
+      <!-- <img src="photo1.jpg"> -->
+      <img src="gif2.gif" >
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3 -->
+  <section class="reveal">
+    <h2>Tu eres la razon por la que mi vida siempre florece.
+      
+        Eres mi calma en medio del ruido, eres mi hogar donde me siento seguro, y si volviera a nacer mil veces, mil veces te volveria amar
+
+    </h2>
+    <div class="gallery">
+      <img src="photo2.png">
+      <!-- <img src="gif2.gif"> -->
+    </div>
+  </section>
+
+  <!-- SECCIÓN CARTA -->
+  <section class="reveal">
+    <div class="letter">
+      <div class="letter-content">
+Los momentos mas bonitos que atesoro son lo que he pasado contigo. Adoro escuchar tu voz por que eres mi paz, eres mi hogar. Gracias por ser una gran esposa
+
+       Jamas dude del amor que te tengo eres la mejor parte de mi vida, mi alegria, mi razon para luchar y la persona con la que quiero compartir cada instante de mi existencia.
+         
+       No me alcanzan las palabras para explicarte cuanto te amo, pero si me alcanzara la vida para demostrartelo contigo a mi lado
+ 
+      Te quiero ser sincero te programo esto mientras mis lagrimas caen en el teclado, te amo mi amor, no quiero que desconfie de mi, yo quiero todo contigo, yo ya no puedo vivir sin ti 
+      con solo el hecho de pensar en que te puedo perder me desespero por que tu eres mi mundo, eres mi casualidad mas hermosa y mi desicion mas segura
+
+      Siempre soñe en tenerte conmingo desde pequeño, me fuera encanto llegar antes para protegerte de lo que te paso.
+        
+       Me duele tanto no poder arreglar el pasado ni acelerar el futuro, pero si estas conmigo cualquier momento se vuelve el correcto
+
+   nunca te vayas mi amor, sigamos luchando juntos 
+
+   Te amo esposita, feliz dia de las flores amarillas 
+        ></time>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const sections = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  sections.forEach(section => observer.observe(section));
+
+  function iniciar(){
+    document.getElementById('inicio').style.display = 'none';
+    document.getElementById('contenido').style.display = 'block';
+
+    const audio = document.getElementById('musica');
+    audio.currentTime = 46;
+    audio.play();
+  }
+</script>
+
 </body>
-
 </html>
