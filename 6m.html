@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:#faf3f3;
+  overflow:hidden;
+}
+
+/* INICIO */
+.start{
+  height:100vh;
+  display:flex;
+  flex-direction:column;  
+  justify-content:center;
+  align-items:center;
+  animation:fadeIn 1s ease;
+}
+
+.start h1{
+  font-family:'Great Vibes',cursive;
+  font-size:3rem;
+  color:#a00034;
+  margin-bottom:40px;
+}
+
+.open-btn{
+  padding:14px 45px;
+  border-radius:40px;
+  border:2px solid #a00034;
+  background:transparent;
+  color:#a00034;
+  font-size:1rem;
+  cursor:pointer;
+  transition:.4s;
+}
+
+.open-btn:hover{
+  background:#a00034; 
+  color:white;
+  transform:scale(1.08);
+}
+
+/* APP */
+.app{
+  display:none;
+  height:100vh;
+  padding:25px;
+  animation:fadeIn .6s ease;
+}
+
+.title{
+  font-family:'Great Vibes',cursive;
+  text-align:center;
+  color:#a00034;
+  font-size:2.2rem;
+}
+
+.grid{
+  margin-top:50px;
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:15px;
+  max-width:320px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.card{
+  border-radius:18px;
+  background:white;
+  text-align:center;
+  cursor:pointer;
+  transition:.35s;
+  padding:25px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.1);
+}
+
+.card:hover{
+  transform:scale(1.1);
+  background:#ffe6ec;
+}
+
+.icon{
+  font-size:1.8rem;
+}
+
+/* PANTALLAS */
+.screen{display:none;animation:fadeIn .4s}
+.active{display:block}
+
+.back{
+  margin-top:25px;
+  padding:10px 25px;
+  border:none;
+  border-radius:25px;
+  background:#a00034;
+  color:white;
+  cursor:pointer;
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  z-index: 10000;
+  display: flex;
+}
+
+/* ===== GALERÍA PRO ===== */
+.photo-layout{
+  margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(120px,1fr));
+  gap:15px;
+  padding:10px;
+}
+
+.photo{
+  position:relative;
+  width:100%;
+  aspect-ratio: 3/4;
+  overflow:hidden;
+  border-radius:18px;
+  /* border:3px solid #a00034; */
+  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+  cursor:pointer;
+
+  opacity:0;
+  transform:translateY(40px) scale(0.9);
+  animation:showPhoto .8s ease forwards;
+}
+
+/* cascada */
+.photo:nth-child(1){animation-delay:.1s;}
+.photo:nth-child(2){animation-delay:.3s;}
+.photo:nth-child(3){animation-delay:.4s;}
+.photo:nth-child(4){animation-delay:.5s;}
+.photo:nth-child(5){animation-delay:.6s;}
+.photo:nth-child(6){animation-delay:.9s;}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .5s ease, filter .5s ease;
+}
+
+.photo:hover img{
+  transform:scale(1.15);
+  filter:brightness(0.7);
+}
+
+.photo:hover{
+  transform:scale(1.05);
+  box-shadow:0 15px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* etiqueta */
+.label{
+  position:absolute;
+  bottom:-30px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(160,0,52,0.9);
+  color:white;
+  padding:5px 8px;
+  font-size:0.55rem;
+  border-radius:20px;
+  opacity:0;
+  transition:.4s;
+}
+
+.photo:hover .label{
+  bottom:10px;
+  opacity:1;
+}
+
+@keyframes showPhoto{
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+video {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 130%;
+  height: 140%;
+}
+.sunflower{
+  width:420px;
+  max-width:80%;
+  display:block;
+  margin:0 auto;
+  border-radius:20px;
+  /* box-shadow:0 10px 25px rgba(0,0,0,0.2); */
+  animation:float 3s ease-in-out infinite;
+}
+.sunflower-box{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin-top:40px;
+  text-align:center;
+}
+.rain-text{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.drop{
+  position:absolute;
+  top:-50px;
+  font-size:0.7rem;
+  color:#a00034;
+  opacity:0.8;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+}
+.music-box{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:30px;
+}
+
+.music-box iframe{
+  width:90%;
+  max-width:850px;
+  height:500px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.music-text{
+  margin-top:20px;
+  font-size:0.85rem;
+  text-align:center;
+  max-width:300px;
+  opacity:0;
+  animation:fadeText 2s ease forwards;
+  animation-delay:1s;
+}
+.letter-box{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#faf3f3;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  text-align:center;
+  z-index:10;
+}
+
+#letterText{
+  font-size:1rem;
+  max-width:320px;
+  color:#a00034;
+  line-height:1.5;
+}
+</style>
+</head>
+
+<body>
+
+<!-- INICIO -->
+<div class="start" id="start">
+  <h1>Esta lista para ver lo que le programe?</h1>
+<img src="gif2.gif" alt="">
+  <button class="open-btn" onclick="startApp()">Siii</button>
+</div>
+
+<!-- APP -->
+<div class="app" id="app">
+
+  <!-- HOME -->
+  <div id="home" class="screen active">
+    <div class="title">Te amo mi esposita, programado por tu esposo con mucho amor</div>
+
+    <div class="grid">
+      <div class="card" onclick="openSection('memories')">
+        <div class="icon"><i class="fa-solid fa-photo-film"></i></div>
+      </div>
+
+      <div class="card" onclick="openSection('letters')">
+        <div class="icon"><i class="fa-solid fa-gift"></i></div>
+      </div>
+
+      <div class="card" onclick="openSection('flowers'),escribirCarta()">
+        <div class="icon"><i class="fa-solid fa-scroll" style="color: rgb(80, 30, 75);"></i></div>
+      </div>
+
+      <div class="card" onclick="openSection('gift')">
+        <div class="icon"><i class="fa-solid fa-music"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEMORIES -->
+  <div id="memories" class="screen">
+    <div class="title">Captured Memories</div>
+
+    <div class="photo-layout">
+      <div class="photo" style="border: none;">
+<video id="miVideo" src="1v.mp4"  loop></video>
+        <!-- <span class="label">Tus besos siempre me lleban alas nubes</span> -->
+      </div>
+
+      <div class="photo">
+        <img src="p2.jpeg">
+        <span class="label">Amo sentir mi mundo en mis brazos</span>
+      </div>
+
+
+
+      <div class="photo">
+        <img src="p1.jpeg">
+        <span class="label">Si un beso pudiera decirte cuanto te amo, estoy seguro que nos besariamos para siempre</span>
+      </div>
+
+
+
+      <div class="photo">
+        <img src="p3.jpeg">
+        <span class="label">Mi lugar favorito siempre sera, cuando camino a tu lado, cuando me rio contigo, cuando me siento en paz y cuando descubro que la felicidad siempre sera tu </span>
+      </div>
+
+            <div class="photo">
+        <img src="p4.jpeg">
+        <span class="label">Usted y yo los dos juntitos donde sea pero los dos juntos </span>
+      </div>
+
+            <div class="photo">
+        <img src="p6.jpeg">
+        <span class="label">La distancia nos hara mucho mas fuertes, y el amor que nos tenemos crecer mucho mas</span>
+      </div>
+    </div>
+
+    <button class="back" onclick="goHome()">Back</button>
+  </div>
+
+  <!-- LETTERS -->
+<div id="letters" class="screen">
+  <div class="title">Como los girasoles siguen al sol, mi corazon te sigue a ti</div>
+
+  <div class="sunflower-box">
+    <img src="ramo.png" class="sunflower">
+<div class="rain-text"></div>
+    <p class="sun-text">
+      <!-- Como los girasoles buscan la luz, yo siempre busco tu amor 🌻 -->
+    </p>
+  </div>
+
+  <button class="back" onclick="goHome()"><</button>
+</div>
+  <!-- FLOWERS -->
+<div id="flowers" class="screen">
+  <!-- <div class="title">Para ti 🌸</div> -->
+
+  <div id="letterBox" class="letter-box">
+    <p id="letterText"></p>
+  </div>
+
+  <button class="back" onclick="goHome()"><</button>
+</div>
+  <!-- GIFT -->
+<div id="gift" class="screen">
+  <div class="title">Esta cancion siempre me recuerda a usted 🥺</div>
+
+  <div class="music-box">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/KvMmrIHH_pM?si=LFnVmcHDugdXAIkc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <p class="music-text">
+      No encontré una canción que explicara todo lo que siento por ti…  
+      pero esta se acerca un poquito a lo que mi corazón dice cuando estoy contigo.  
+
+      Gracias por existir, por hacer mi mundo más bonito y por ser mi lugar favorito.  
+      Te amo más de lo que las palabras pueden explicar ❤️
+    </p>
+  </div>
+
+  <button class="back" onclick="goHome()"><</button>
+</div>
+
+</div>
+
+<script>
+function startApp(){
+  document.getElementById('start').style.display='none';
+  document.getElementById('app').style.display='block';
+}
+
+function openSection(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function goHome(){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('home').classList.add('active');
+}
+
+const video = document.getElementById("miVideo");
+
+function playVideo(){
+  if(video){
+    video.play().catch(()=>{});
+  }
+}
+
+function stopVideo(){
+  if(video){
+    video.pause();
+    video.currentTime = 0;
+  }
+}
+
+/* 👇 MODIFICAMOS TUS FUNCIONES (mínimo cambio) */
+
+const oldOpenSection = openSection;
+openSection = function(id){
+  oldOpenSection(id);
+
+  if(id === "memories"){
+    setTimeout(playVideo, 200);
+  } else {
+    stopVideo();
+  }
+}
+
+const oldGoHome = goHome;
+goHome = function(){
+  oldGoHome();
+  stopVideo();
+}
+
+const frases = [
+  "Eres mi girasol 🌻",
+  "Siempre busco tu luz",
+  "Floreces en mi corazón",
+  "Eres mi alegría de cada dia",
+  "Contigo todo brilla",
+  "Mi amor crece como girasol",
+  "Siempre hacia ti 🌻",
+  "Eres mi sol",
+  "Tu eres mi mundo",
+  "Iluminas mi vida"
+];
+
+function crearLluvia(){
+  const container = document.querySelector(".rain-text");
+
+  setInterval(() => {
+    const span = document.createElement("span");
+    span.classList.add("drop");
+    span.innerText = frases[Math.floor(Math.random()*frases.length)];
+
+    span.style.left = Math.random()*100 + "vw";
+    span.style.animationDuration = (3 + Math.random()*3) + "s";
+
+    container.appendChild(span);
+
+    setTimeout(()=> span.remove(), 6000);
+  }, 400);
+}
+
+/* activar solo en letters */
+const oldOpenSection2 = openSection;
+openSection = function(id){
+  oldOpenSection2(id);
+
+  if(id === "letters"){
+    crearLluvia();
+  }
+}
+
+/* ===== CARTA ESCRIBIÉNDOSE ===== */
+const textoCarta = `Amor de mi vida, es increíble… ya estamos cumpliendo 6 meses.  
+
+6 meses donde cada día es una carrera, y cada día he luchado con todas mis fuerzas para ganarla y cruzar la meta juntos.  
+
+Amo tantas cosas de ti que no existe ningún tipo de almacenamiento ni red capaz de guardar todo lo que siento.  
+
+Quiero decirte que eres lo mejor que me ha pasado en la vida. Siempre estuve esperándote, y gracias por llegar en el momento oportuno.  
+
+Gracias por hacer mis días diferentes, porque por primera vez he sentido un amor tan grande.  
+Mi esposita… simplemente perfecta, eso es lo que eres.  
+
+Me has dicho que me he olvidado de ti, pero eso es imposible…  
+porque en cada latido mío, en cada pensamiento y en cada momento… tú estás ahí en mí.  
+
+Yo no dejo de pensarte. Entraste a mi corazón para quedarte, y me encanta eso.  
+Amo amarte con intensidad.  
+
+Mi amor, sigamos luchando juntos para cumplir todo lo que nos hemos propuesto…  
+y seguir amándonos cada día con más intensidad ❤️`;
+
+let escribiendo = false;
+
+function escribirCarta(){
+  if(escribiendo) return;
+  escribiendo = true;
+
+  const textEl = document.getElementById("letterText");
+  const box = document.getElementById("letterBox");
+
+  textEl.innerHTML = "";
+  box.style.display = "flex";
+
+  let i = 0;
+
+  const interval = setInterval(()=>{
+    textEl.innerHTML += textoCarta[i];
+    i++;
+
+    if(i >= textoCarta.length){
+      clearInterval(interval);
+
+      setTimeout(()=>{
+        // box.style.display = "none";
+      }, 2000);
+    }
+  }, 40);
+}
+</script>
+
+<script src="https://kit.fontawesome.com/7a43d702a5.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
